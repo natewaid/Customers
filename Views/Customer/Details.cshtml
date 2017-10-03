@@ -1,0 +1,31 @@
+﻿@model Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@Html.ActionLink("<< Back To List", "Index", "Customer", new { @class = "btn btn-primary" })
+
+<h2>Customer Details</h2>
+
+@using (Html.BeginForm("Details", "Customer", FormMethod.Post))
+{
+    <div class="form-group">        
+
+        @Html.HiddenFor(m => m.Id)
+
+        <label for="Name">Name</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+
+        <label for="Email">Email</label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+        <label for="Phone">Phone</label>
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Save"/>
+
+    <a href="@Url.RouteUrl("customer.delete", new { id = Model.Id } )" class="btn btn-danger">Delete</a>
+}

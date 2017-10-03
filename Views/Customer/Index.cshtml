@@ -1,0 +1,38 @@
+﻿@model IList<Customer>
+
+@{
+    ViewBag.Title = "Customers";
+}
+
+<h2>Customers</h2>
+
+<a href="@Url.RouteUrl("customer.details")" class="btn btn-primary">Add New Customer</a>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>            
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td><a href="@Url.RouteUrl("customer.details", new { id = c.Id })" class="btn btn-sm btn-info">Edit</a></td>               
+                <td><a href="@Url.RouteUrl("customer.delete", new { id = c.Id } )" class="btn btn-sm btn-danger">Delete</a></td>
+                <td>@c.Name</td>
+                <td>@c.Email</td>
+                <td>@c.Phone</td>                
+            </tr>
+        }
+
+    </tbody>
+
+</table>
